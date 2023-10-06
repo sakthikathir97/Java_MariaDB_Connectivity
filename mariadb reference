@@ -1,0 +1,29 @@
+for --fix-broken configuration
+
+sudo apt install --fix-broken;
+
+for removed specified dpkg or repositary
+
+->sudo apt autoremove or remove or purge mysql-server
+
+Here are important references for mysql and mariadb configuration
+
+https://www.youtube.com/watch?v=F0xqkcCYUB8
+
+https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost
+
+https://askubuntu.com/questions/1029177/error-1698-28000-access-denied-for-user-rootlocalhost-at-ubuntu-18-04
+
+https://stackoverflow.com/questions/38711334/how-can-i-grant-all-privileges-to-rootlocalhost-in-mysql
+
+for secure shell 
+https://www.a2hosting.com/kb/getting-started-guide/accessing-your-account/using-ssh-secure-shell/
+
+Connection conn=DriverManager.getConnection("jdbc:mariadb://localhost:3306/db useSSH=false","root","123");
+
+this is jdbc mariadb.jar file for established connection between mysql-server and mysql-client
+
+https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client/3.2.0
+
+
+

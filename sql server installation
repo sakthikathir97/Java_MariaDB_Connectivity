@@ -1,0 +1,159 @@
+https://linuxhint.com/install-mysql-linux-mint-ubuntu/
+mysql socket:root@kathirvel-Inspiron-5558:/var/lib/mysql
+mysql config:root@kathirvel-Inspiron-5558:/etc/init.d#
+we need to create a mysqld directory in this location
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+
+https://medium.com/@kivaimuinde/resolve-opt-lampp-bin-mysql-server-264-kill-no-such-process-3a62d2331349
+https://itsfoss.com/install-xampp-ubuntu/
+
+we need to install openjdk-8-jdk in terminal
+
+->sudo apt-get install openjdk-8-jdk
+
+Again we need to install mysql client server
+->sudo apt-get install mysql-server mysql-client libmysql-java 
+
+
+× mysql.service - MySQL Community Server
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+     Active: failed (Result: exit-code) since Sun 2022-12-04 17:30:03 CET; 3min 36s ago
+        CPU: 12ms
+
+Dez 04 17:30:03 hame-m122 systemd[1]: mysql.service: Scheduled restart job, restart counter is at
+Dez 04 17:30:03 hame-m122 systemd[1]: Stopped MySQL Community Server.
+Dez 04 17:30:03 hame-m122 systemd[1]: mysql.service: Start request repeated too quickly.
+Dez 04 17:30:03 hame-m122 systemd[1]: mysql.service: Failed with result exit-code.
+Dez 04 17:30:03 hame-m122 systemd[1]: Failed to start MySQL Community Server.
+Failed to start mysql.service: Unit mysql.service failed to load properly, please adjust/correct and reload service manager: Device or resource busy
+× mysql.service - MySQL Community Server
+     Loaded: error (Reason: Unit mysql.service failed to load properly, please adjust/correct and
+     Active: failed (Result: exit-code) since Sun 2022-12-04 17:30:03 CET; 1min 45s ago
+        CPU: 12ms
+
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket /var/run/mysqld/mysqld.sock (2)
+
+
+kathirvel@kathirvel-Inspiron-5558:~$ sudo -i
+[sudo] password for kathirvel:       
+root@kathirvel-Inspiron-5558:~# cd /home/kathirvel
+root@kathirvel-Inspiron-5558:~ pwd
+/home/kathirvel
+root@kathirvel-Inspiron-5558:~systemctl status mysql.service
+● mariadb.service - MariaDB 10.1.48 database server
+   Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: 
+   Active: failed (Result: timeout) since Fri 2023-10-06 10:37:14 EDT; 16min ago
+     Docs: man:mysqld(8)
+           https://mariadb.com/kb/en/library/systemd/
+  Process: 4936 ExecStart=/usr/sbin/mysqld $MYSQLD_OPTS $_WSREP_NEW_CLUSTER $_WS
+  Process: 4787 ExecStartPre=/bin/sh -c [ ! -e /usr/bin/galera_recovery ] && VAR
+  Process: 4785 ExecStartPre=/bin/sh -c systemctl unset-environment _WSREP_START
+  Process: 4784 ExecStartPre=/usr/bin/install -m 755 -o mysql -g root -d /var/ru
+ Main PID: 4936 (code=exited, status=0/SUCCESS)
+
+Oct 06 10:22:11 kathirvel-Inspiron-5558 systemd[1]: Starting MariaDB 10.1.48 dat
+Oct 06 10:22:11 kathirvel-Inspiron-5558 mysqld[4936]: 2023-10-06 10:22:11 140179
+Oct 06 10:37:11 kathirvel-Inspiron-5558 systemd[1]: mariadb.service: Start opera
+Oct 06 10:37:14 kathirvel-Inspiron-5558 systemd[1]: mariadb.service: Failed with
+Oct 06 10:37:14 kathirvel-Inspiron-5558 systemd[1]: Failed to start MariaDB 10.1
+lines 1-16/16 (END)
+
+root@kathirvel-Inspiron-5558:/home/kathirvel# /etc/init.d mysql stop
+mysql: no process found
+mysqld_safe: no process found
+mysqld: no process found
+
+root@kathirvel-Inspiron-5558:/home/kathirvel#top
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND     
+ 1096 root      20   0  994076  71208  48176 S   9.6  0.4   3:30.73 Xorg        
+ 1855 kathirv+  20   0 3622112 125736  66816 S   7.0  0.8   3:36.75 cinnamon    
+ 5776 kathirv+  20   0  1.108t 368564 162804 S   5.3  2.3   3:54.71 chrome      
+ 5701 kathirv+  20   0  687288  58900  35288 S   3.3  0.4   0:14.30 xed         
+ 2931 kathirv+  20   0  0.101t 995.4m  97212 S   2.7  6.2   9:35.23 java        
+ 2826 kathirv+  20   0  630124  36996  27972 S   2.3  0.2   0:06.87 gnome-term+ 
+ 1701 kathirv+   9 -11 1856940  18364  14108 S   1.3  0.1   0:03.94 pulseaudio  
+ 2106 kathirv+  20   0 32.942g 328408 218032 S   1.0  2.0   2:13.78 chrome      
+ 2167 kathirv+  20   0 32.483g 124204  95380 S   1.0  0.8   0:36.69 chrome      
+ 5920 root      20   0   41784   3672   3092 R   0.7  0.0   0:00.06 top         
+   10 root      20   0       0      0      0 I   0.3  0.0   0:07.60 rcu_sched   
+  239 root      -2   0       0      0      0 S   0.3  0.0   0:02.45 i915/signa+ 
+  295 root       0 -20       0      0      0 I   0.3  0.0   0:00.24 kworker/1:+ 
+  674 root     -51   0       0      0      0 S   0.3  0.0   0:04.43 irq/45-iwl+ 
+ 5292 root      20   0       0      0      0 I   0.3  0.0   0:00.30 kworker/u8+ 
+ 5729 root      20   0       0      0      0 I   0.3  0.0   0:00.17 kworker/2:+ 
+ 5782 kathirv+  20   0  1.106t 201940 115384 S   0.3  1.2   0:15.60 chrome   
+
+root@kathirvel-Inspiron-5558:/home/kathirvel#sudo systemctl stop mysql
+root@kathirvel-Inspiron-5558:/home/kathirvel#sudo systemctl status
+● kathirvel-Inspiron-5558
+    State: degraded
+     Jobs: 0 queued
+   Failed: 1 units
+    Since: Fri 2023-10-06 09:45:46 EDT; 1h 13min ago
+   CGroup: /
+           ├─user.slice
+           │ └─user-1000.slice
+           │   ├─user@1000.service
+           │   │ ├─gvfs-goa-volume-monitor.service
+           │   │ │ └─1810 /usr/lib/gvfs/gvfs-goa-volume-monitor
+           │   │ ├─xdg-permission-store.service
+           │   │ │ └─2168 /usr/libexec/xdg-permission-store
+           │   │ ├─xdg-document-portal.service
+           │   │ │ └─2164 /usr/libexec/xdg-document-portal
+           │   │ ├─xdg-desktop-portal.service
+           │   │ │ ├─2155 /usr/libexec/xdg-desktop-portal
+           │   │ │ ├─2187 sh -c /usr/lib/x86_64-linux-gnu/libproxy/0.4.14/pxgset
+           │   │ │ └─2188 /usr/lib/x86_64-linux-gnu/libproxy/0.4.14/pxgsettings 
+           │   │ ├─gvfs-daemon.service
+           │   │ │ ├─1714 /usr/lib/gvfs/gvfsd
+           │   │ │ ├─1724 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big
+           │   │ │ ├─1974 /usr/lib/gvfs/gvfsd-trash --spawner :1.14 /org/gtk/gvf
+lines 1-23
+
+root@kathirvel-Inspiron-5558:/home/kathirvel#sudo systemctl start
+Too few arguments.
+root@kathirvel-Inspiron-5558:/home/kathirvel# service mysql restart
+root@kathirvel-Inspiron-5558:sudo apt purge mysql-server
+for remove mysql package or configure
+root@kathirvel-Inspiron-5558:sudo apt purge mysql-*;
+remove all mysql server package
+
+ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+
+root@kathirvel-Inspiron-5558:/home/kathirvel#sudo apt-get install mariadb-server mariadb-client;
+for install new mariadb-server and mariadb-community-client
+
+root@kathirvel-Inspiron-5558:/home/kathirvel#sudo apt upgrade mysql-server 
+for upgrade package
+
+root@kathirvel-Inspiron-5558:~# service mariadb start
+^C
+root@kathirvel-Inspiron-5558:~# mariadb -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 10.1.48-MariaDB-0ubuntu0.18.04.1 Ubuntu 18.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> select user,plugin,host from mysql.service
+    -> ;
+ERROR 1146 (42S02): Table 'mysql.service' doesn't exist
+MariaDB [(none)]> select user,plugin,host from mysql.user;
++------+-----------------------+-----------+
+| user | plugin                | host      |
++------+-----------------------+-----------+
+| root | mysql_native_password | localhost |
++------+-----------------------+-----------+
+1 row in set (0.00 sec)
+udo mysql -u root # I had to use "sudo" since it was a new installation
+
+MariaDB [(none)]> USE mysql;
+MariaDB [(none)]> UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+MariaDB [(none)]> FLUSH PRIVILEGES;
+MariaDB [(none)]> exit;
+
+sudo service mysql restart
+
+
