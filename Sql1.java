@@ -29,23 +29,20 @@ public class Sql1
 		ps1.setInt(1, 104);
 		ps1.setString(2,"hamshika");
 		int res=ps1.executeUpdate();
-		
-		System.out.println(res+": record insert successfully..");
+		System.out.println("record insert successfully :"+res);
 		
 		String up1=("update Section set name=? where id=?");
 		PreparedStatement ps2=conn.prepareStatement(up1);
 		ps2.setString(1, "murugan");
 		ps2.setInt(2,101);
-		
 		int res2=ps2.executeUpdate();
-		System.out.println(res2+": record update successfully..");
+		System.out.println("record update successfully :"+res2);
 		
 		String dt1=("delete from Section where id=?");
 		PreparedStatement ps3=conn.prepareStatement(dt1);
 		ps3.setInt(1,104);
-		
 		int res3=ps3.executeUpdate();
-		System.out.println(res3+": delete record successfully..");
+		System.out.println("delete record successfully :"+res3);
 		
 		st.close();
 		rs.close();
