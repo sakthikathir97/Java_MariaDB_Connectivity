@@ -10,7 +10,7 @@ public class Sql1
 		String Driver="jdbc:mariadb://localhost:3306/Student";
 		String uname="root";
 		String pword=null;
-		String Statement;
+		Statement st;
 		try
 		{	
 		
