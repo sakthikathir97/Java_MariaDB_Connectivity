@@ -10,12 +10,13 @@ public class Sql1
 		String Driver="jdbc:mariadb://localhost:3306/Student";
 		String uname="root";
 		String pword=null;
+		String Statement;
 		try
 		{	
 		
 		Class.forName(classDriver);
 		conn=DriverManager.getConnection(Driver,uname,pword);
-		Statement st=conn.createStatement();
+		st=conn.createStatement();
 		ResultSet rs=st.executeQuery("select * from Section");
 		
 		while(rs.next())
